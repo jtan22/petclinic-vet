@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface VetRepository extends PagingAndSortingRepository<Vet, Integer>, CrudRepository<Vet, Integer> {
 
-    Page<Vet> findAll(Pageable pageable);
+    Page<Vet> findPage(Pageable pageable);
 
 }
