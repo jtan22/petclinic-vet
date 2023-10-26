@@ -17,8 +17,12 @@ public class VetController {
 
     private static final Logger LOG = LoggerFactory.getLogger(VetController.class);
 
+    private final VetRepository vetRepository;
+
     @Autowired
-    private VetRepository vetRepository;
+    public VetController(VetRepository vetRepository) {
+        this.vetRepository = vetRepository;
+    }
 
     /**
      * Health check.

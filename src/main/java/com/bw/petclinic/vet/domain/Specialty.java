@@ -10,7 +10,7 @@ public class Specialty {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "name")
+    @Column
     private String name;
 
     public int getId() {
