@@ -1,6 +1,5 @@
 package com.bw.petclinic.vet.controller;
 
-import com.bw.petclinic.vet.domain.PagedVets;
 import com.bw.petclinic.vet.domain.Vet;
 import com.bw.petclinic.vet.repository.VetRepository;
 import org.slf4j.Logger;
@@ -43,9 +42,8 @@ public class VetController {
      * @return
      */
     @GetMapping("/vets")
-    public PagedVets getVets(@RequestParam("pageNumber") int pageNumber, @RequestParam("pageSize") int pageSize) {
+    public Page<Vet> getVets(@RequestParam("pageNumber") int pageNumber, @RequestParam("pageSize") int pageSize) {
         LOG.info("GET /vets with pageNumber [" + pageNumber + "], pageSize [" + pageSize + "]");
-        Page<Vet> vets = vetRepository.findAll(PageRequest.of(pageNumber, pageSize));
-        return new PagedVets(vets.getContent(), pageNumber, pageSize, vets.getTotalPages(), vets.getTotalElements());
+        return vetRepository.findAll(PageRequest.of(pageNumber, pageSize));
     }
 }
