@@ -45,7 +45,7 @@ public class VetController {
     @GetMapping("/vets")
     public PagedVets getVets(@RequestParam("pageNumber") int pageNumber, @RequestParam("pageSize") int pageSize) {
         LOG.info("GET /vets with pageNumber [" + pageNumber + "], pageSize [" + pageSize + "]");
-        Page<Vet> vets = vetRepository.findPage(PageRequest.of(pageNumber, pageSize));
+        Page<Vet> vets = vetRepository.findAll(PageRequest.of(pageNumber, pageSize));
         return new PagedVets(vets.getContent(), pageNumber, pageSize, vets.getTotalPages(), vets.getTotalElements());
     }
 }
